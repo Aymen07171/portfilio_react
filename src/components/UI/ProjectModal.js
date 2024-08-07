@@ -4,7 +4,7 @@ import Card from "./Card";
 import Cancel from "./Cancel";
 import { motion } from "framer-motion";
 import parse from "html-react-parser";
-import Jingle from "../../img/Jingle.png";
+// import Jingle from "../../img/Jingle.png";
 const Backdrop = (props) => {
   const dropIn = {
     hidden: {
@@ -62,7 +62,7 @@ const ModalOverlay = (props) => {
       </div>
       <div className={classes.right}>
         <div className={classes.imgContainer}>
-          <img className={classes.img} src={props.img}></img>
+          <img className={classes.img} src={props.img}  alt="sticker"></img>
         </div>
       </div>
     </Card>

@@ -1,6 +1,6 @@
+import React, { useEffect } from "react";
 import styles from "./Landing.module.css";
 import Aos from "aos";
-import { useEffect } from "react";
 import "aos/dist/aos.css";
 import Logo from "../Logo/Logo";
 import Mouse from "../UI/Mouse";
@@ -18,6 +18,17 @@ const Landing = () => {
           <h2
             data-aos="fade-in"
             data-aos-duration="2000"
+            className={styles.hookTitle}
+          >
+            Bringing Ideas to Life
+          </h2>
+        </div>
+      </div>
+      <div className={styles.right}>
+        <div className={styles.rightWrapper}>
+          <h2
+            data-aos="fade-in"
+            data-aos-duration="2000"
             className={styles.intro}
           >
             Hello, My name is
@@ -28,20 +39,23 @@ const Landing = () => {
             data-aos-duration="2000"
             className={styles.name}
           >
-            Nhan Nguyen
+            Ayman ELATTAR
           </h1>
           <p
             data-aos="fade-in"
             data-aos-duration="2000"
             className={styles.description}
           >
-            Full Stack Developer
+            I'm a passionate Front End Developer with a keen eye for design and a 
+            love for creating seamless user experiences. With expertise in modern 
+            web technologies, I transform concepts into interactive, responsive, 
+            and visually appealing websites.
           </p>
+          <Link to="project" spy={true} smooth={true} offset={-30} duration={500}>
+            <Mouse />
+      </Link>
         </div>
       </div>
-      <Link to="project" spy={true} smooth={true} offset={-30} duration={500}>
-        <Mouse />
-      </Link>
     </div>
   );
 };

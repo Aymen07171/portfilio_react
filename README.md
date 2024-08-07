@@ -56,9 +56,3 @@ THEN I am presented with text or icon links to the developer’s GitHub and Link
 
 ``` 
 
-## Submission
-This portfolio was uploaded to GitHub at the following repository link:
-[https://github.com/nhanng19/portfolio_react](https://github.com/nhanng19/portfolio_react)
-
-Deployed Link:
-[https://www.nhanngyn.tech/](https://www.nhanngyn.tech/)

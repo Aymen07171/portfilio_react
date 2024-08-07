@@ -1,6 +1,8 @@
 .landing {
+  padding-top: 14rem;
   display: flex;
   height: 100vh;
+  margin-right: 100px;
 }
 
 .left {
@@ -30,11 +32,12 @@
 
 .name {
   font-size: 60px;
+
 }
 
 .description {
   height: 50px;
-  font-size: 30px;
+  font-size: 15px;
 
 }
 

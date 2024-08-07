@@ -1,53 +1,63 @@
-import { useState, useEffect } from "react";
-import { gsap, CSSPlugin, Expo } from "gsap";
+import React, { useState, useEffect, useCallback } from "react";
+import { gsap, Expo } from "gsap";
 import styled from "styled-components";
 
 const Preloader = ({ setLoading }) => {
   const [counter, setCounter] = useState(0);
-  useEffect(() => {
-    const count = setInterval(() => {
-      setCounter((counter) =>
-        counter < 100
-          ? counter + 1
-          : (clearInterval(count), setCounter(100), reveal())
-      );
-    }, 25);
-  }, []);
 
-  async function reveal() {
-    const t1 =  gsap.timeline({});
+  const reveal = useCallback(() => {
+    const t1 = gsap.timeline({
+      onComplete: () => setLoading(false)
+    });
 
-      await t1
-      .to(".follow", {
-        width: "100%",
-        ease: Expo.easeInOut,
-        duration: 1.2,
-        delay: 0.5,
-      })
+    t1.to(".follow", {
+      width: "100%",
+      ease: Expo.easeInOut,
+      duration: 1.2,
+      delay: 0.5,
+    })
       .to(".hide", { opacity: 0, duration: 0.3 })
       .to(".follow", {
         height: "100%",
         ease: Expo.easeInOut,
         duration: 0.7,
       })
-      .to(".content", { width: "100%", ease: Expo.easeInOut, duration: 0.7 });
-    if (!t1.isActive()) {
-       await setLoading(false);
+      .to(".content", { width: "100%", ease: Expo.easeInOut, duration: 0.7 })
+      .catch(error => console.error("Animation failed:", error));
+  }, [setLoading]);
+
+  useEffect(() => {
+    const count = setInterval(() => {
+      setCounter((prevCounter) =>
+        prevCounter < 100
+          ? prevCounter + 1
+          : (clearInterval(count), 100)
+      );
+    }, 25);
+
+    return () => clearInterval(count);
+  }, []);
+
+  useEffect(() => {
+    if (counter === 100) {
+      reveal();
     }
-  }
+  }, [counter, reveal]);
 
   return (
     <AppContainer>
       <Loading>
-        <Follow className="follow"></Follow>
+        <Follow className="follow" aria-hidden="true" />
         <ProgressBar
           className="hide"
           id="progress-bar"
-          style={{ width: counter + "%" }}
-        ></ProgressBar>
+          style={{ width: `${counter}%` }}
+          aria-valuenow={counter}
+          aria-valuemin="0"
+          aria-valuemax="100"
+        />
       </Loading>
-
-      <Content className="content"></Content>
+      <Content className="content" aria-hidden="true" />
     </AppContainer>
   );
 };
@@ -58,6 +68,7 @@ const AppContainer = styled.div`
   color: #000000;
   position: relative;
 `;
+
 const Loading = styled.div`
   height: 100%;
   width: 100%;
@@ -68,6 +79,7 @@ const Loading = styled.div`
   position: absolute;
   top: 0;
 `;
+
 const Follow = styled.div`
   position: absolute;
   background: linear-gradient(112.1deg, #000000 11.4%, #2d3436 70.2%);

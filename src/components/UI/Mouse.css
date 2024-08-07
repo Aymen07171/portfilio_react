@@ -35,11 +35,11 @@
 
 
 .scroll-btn {
-  height: 30px;
+  height: 12rem;
   width: 10px;
   position: absolute;
-  left: 50%;
-  bottom: 30px;
+  left: 10%;
+  bottom: 5rem;
   border-radius: 50px;
   cursor: pointer;
   animation: upDown 1.5s ease infinite;

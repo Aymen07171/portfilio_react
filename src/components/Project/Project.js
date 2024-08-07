@@ -8,6 +8,8 @@ const Project = ({ img, link, delay, title, techno, description, summary, source
   const modalHandler = () => {
     setModal(false);
   };
+
+  
   return (
     <>
       <div

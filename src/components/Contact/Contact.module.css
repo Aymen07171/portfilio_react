@@ -1,8 +1,9 @@
 .contact {
   height: 100vh;
-  /* position: relative; */
+  position: relative;
   overflow: hidden;
   display: flex;
+  /* width: 50rem; */
 }
 
 .left {
@@ -60,14 +61,17 @@ button {
 }
 input {
   width: 50%;
+  
   height: 50px;
   border: none;
   border-bottom: 1px solid rgb(255, 255, 255);
   background: none;
-  margin: 10px 0px;
+  margin: 10px 0px 10px 50px;
   font-size: 14px;
-  padding-left: 10px;
+  padding-left: 20px;
+  margin-left: 10px;
   color: white;
+   width: 10rem;
 }
 
 input:-webkit-autofill,

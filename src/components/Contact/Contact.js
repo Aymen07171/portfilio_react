@@ -1,11 +1,20 @@
+import React, { useRef, useState } from "react";
 import styles from "./Contact.module.css";
-import { useRef, useState } from "react";
 import emailjs from "emailjs-com";
 import { GoogleMap, useLoadScript, MarkerF } from "@react-google-maps/api";
 import Marker from "../../img/marker.png";
-import Config from "../../config";
 import ThankYou from "../UI/ThankYou";
 import { AnimatePresence } from "framer-motion";
+
+// Replace this with your actual configuration
+const Config = {
+  SERVICE_ID: "service_rz6utmp",
+  TEMPLATE_ID: "Ace4kU4N7-qFI5RGr",
+  USER_ID: "YOUR_EMAILJS_USER_ID", // Replace with your actual User ID
+  API_KEY: "AIzaSyDgtYEp6PNe1X1aPduEwV02zEZCqMcZRMU",
+  MAP_ID: "YOUR_GOOGLE_MAPS_MAP_ID" // Replace with your actual Map ID
+};
+
 const Contact = () => {
   const formRef = useRef();
   const [done, setDone] = useState(false);
@@ -29,11 +38,13 @@ const Contact = () => {
         }
       );
   };
+
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: Config.API_KEY,
   });
 
   if (!isLoaded) return <div>Loading</div>;
+
   return (
     <div id="contact" className={styles.contact}>
       <div className={styles.right}>
@@ -47,26 +58,30 @@ const Contact = () => {
             type="text"
             placeholder="Name"
             name="user_name"
+            required
           />
           <input
             data-aos="fade-up-right"
             type="text"
             placeholder="Subject"
             name="user_subject"
+            required
           />
           <input
             data-aos="fade-up-right"
-            type="text"
+            type="email"
             placeholder="Email"
             name="user_email"
+            required
           />
           <textarea
             data-aos="fade-up-right"
             rows="5"
             placeholder="Message"
             name="message"
+            required
           />
-          <button data-aos="fade-up-right">Submit</button>
+          <button data-aos="fade-up-right" type="submit">Submit</button>
         </form>
       </div>
       <AnimatePresence
@@ -90,7 +105,7 @@ const Contact = () => {
       >
         <GoogleMap
           zoom={5}
-          center={{ lat: 33.838000707701006, lng: -117.86423156003966 }}
+          center={{ lat: 34.24558778132436, lng: -6.644672785821152}}
           mapContainerClassName={styles.map}
           options={{
             mapId: Config.MAP_ID,
@@ -103,7 +118,7 @@ const Contact = () => {
               url: Marker,
               scaledSize: new window.google.maps.Size(30, 50),
             }}
-            position={{ lat: 33.838000707701006, lng: -117.86423156003966 }}
+            position={{ lat: 34.24558778132436, lng: -6.644672785821152}}
           />
         </GoogleMap>
       </div>
