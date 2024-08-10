@@ -86,7 +86,7 @@ const Contact = () => {
       </div>
       <AnimatePresence
         initial={false}
-        exitBeforeEnter={true}
+        mode="wait"
         onExitComplete={() => null}
       >
         {done && (

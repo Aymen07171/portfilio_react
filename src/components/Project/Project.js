@@ -5,11 +5,11 @@ import { AnimatePresence } from "framer-motion";
 
 const Project = ({ img, link, delay, title, techno, description, summary, source }) => {
   const [modal, setModal] = useState(false);
+
   const modalHandler = () => {
     setModal(false);
   };
 
-  
   return (
     <>
       <div
@@ -32,8 +32,7 @@ const Project = ({ img, link, delay, title, techno, description, summary, source
         />
       </div>
       <AnimatePresence
-        initial={false}
-        exitBeforeEnter={true}
+        mode="wait"
         onExitComplete={() => null}
       >
         {modal && (
