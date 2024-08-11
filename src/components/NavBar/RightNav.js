@@ -81,7 +81,7 @@ const RightNav = ({ open }) => {
       </li>
       <li>
         <a
-          href="https://drive.google.com/file/d/1JJQJAzv3tKF7ROPnHAwiXPI3bMV5g-0m/view?usp=sharing"
+          href="https://drive.google.com/file/d/1RcZqQYcNtoLH0jDAcRXY8EHGVpxIRvlE/view?usp=sharing"
           target="__blank"
         >
           RESUME
